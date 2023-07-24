@@ -5,6 +5,4 @@ import { App } from "./App";
 import "./index.scss";
 import "macro-css";
 
-const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(<App tab="home" />);
+createRoot(document.getElementById("root")).render(<App />);

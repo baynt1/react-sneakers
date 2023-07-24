@@ -1,69 +1,45 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
+import { IDrawer } from "../interfaces/interfaces";
 
-export const Drawer: FC = () => {
+export const Drawer: FC<IDrawer> = ({ onCloseModal, list }) => {
+  const letMeOut = (event) => {
+    if (event.key === "Escape") onCloseModal();
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", letMeOut);
+    return () => document.removeEventListener("keydown", letMeOut);
+  }, []);
+
   return (
-    <div style={{ display: "none" }} className="overlay">
+    <>
+      <div className="overlay" onClick={onCloseModal}></div>
       <div className="drawer">
         <h2 className="d-flex justify-between mb-30">
           Корзина{" "}
           <img
             className="cu-p"
-            src="../../public/btn-remove.svg"
+            src="/btn-remove.svg"
             alt="Remove"
+            onClick={onCloseModal}
           />
         </h2>
 
         <div className="items">
-          <div className="cartItem d-flex align-center mb-20">
-            <div
-              style={{ backgroundImage: "url(/img/sneakers/1.jpg)" }}
-              className="cartItemImg"
-            ></div>
+          {list.map((item, index) => (
+            <div key={index} className="cartItem d-flex align-center mb-20">
+              <div
+                style={{ backgroundImage: `url(${item.imageUrl})` }}
+                className="cartItemImg"
+              ></div>
 
-            <div className="mr-20 flex">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
+              <div className="mr-20 flex">
+                <p className="mb-5">{item.title}</p>
+                <b>{item.price} тг.</b>
+              </div>
+              <img className="removeBtn" src="/btn-remove.svg" alt="Remove" />
             </div>
-            <img
-              className="removeBtn"
-              src="../../public/btn-remove.svg"
-              alt="Remove"
-            />
-          </div>
-
-          <div className="cartItem d-flex align-center mb-20">
-            <div
-              style={{ backgroundImage: "url(/img/sneakers/1.jpg)" }}
-              className="cartItemImg"
-            ></div>
-
-            <div className="mr-20 flex">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img
-              className="removeBtn"
-              src="../../public/btn-remove.svg"
-              alt="Remove"
-            />
-          </div>
-
-          <div className="cartItem d-flex align-center">
-            <div
-              style={{ backgroundImage: "url(../assets/sneakers/1.jpg)" }}
-              className="cartItemImg"
-            ></div>
-
-            <div className="mr-20 flex">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img
-              className="removeBtn"
-              src="../../public/btn-remove.svg"
-              alt="Remove"
-            />
-          </div>
+          ))}
         </div>
 
         <div className="cartTotalBlock">
@@ -80,10 +56,10 @@ export const Drawer: FC = () => {
             </li>
           </ul>
           <button className="greenButton">
-            Оформить заказ <img src="../../public/arrow.svg" alt="Arrow" />
+            Оформить заказ <img src="/arrow.svg" alt="Arrow" />
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
