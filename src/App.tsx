@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Card } from "./components/Cards";
+import { Header } from "./components/Header";
+import { Drawer } from "./components/Drawler";
 
-function App() {
-  const [count, setCount] = useState(0)
+const arr = [
+  {
+    title: "Мужские Кроссовки Nike Blazer Mid Suede",
+    price: 12999,
+    imageUrl: "../../public/sneakers/1.jpg",
+  },
+  {
+    title: "Мужские Кроссовки Nike Air Max 270",
+    price: 15600,
+    imageUrl: "../../public/sneakers/2.jpg",
+  },
+  {
+    title: "Мужские Кроссовки Nike Blazer Mid Suede",
+    price: 8499,
+    imageUrl: "../../public/sneakers/3.jpg",
+  },
+  {
+    title: "Кроссовки Puma X Aka Boku Future Rider",
+    price: 8999,
+    imageUrl: "../../public/sneakers/4.jpg",
+  },
+];
 
+export const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="wrapper clear">
+      <Drawer />
+      <Header />
+      <div className="content p-40">
+        <div className="d-flex align-center justify-between mb-40">
+          <h1>Все кроссовки</h1>
+          <div className="search-block d-flex">
+            <img src="public/search.svg" alt="Search" />
+            <input placeholder="Поиск..." />
+          </div>
+        </div>
 
-export default App
+        <div className="d-flex">
+          {arr.map((obj, index) => (
+            <Card
+              key={index}
+              title={obj.title}
+              price={obj.price}
+              imageUrl={obj.imageUrl}
+              onClick={() => console.log(obj)}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
