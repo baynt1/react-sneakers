@@ -13,11 +13,12 @@ The React - Sneakers is a web application built with React.js. The app provides 
 - React
 - React Router
 - React Skeleton
-- React hooks
+- React Hooks
 - React Context
 - TypeScript
 - Axios
 - SCSS
+- MVVM
   
 # Installation
 
