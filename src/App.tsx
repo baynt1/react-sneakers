@@ -1,15 +1,14 @@
-import { Card } from "./components/Cards";
-import { Header } from "./components/Header";
-import { Drawer } from "./components/Drawler";
+import { Card } from "./View/Components/Cards/Cards";
 import { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
-import { IListProducts } from "./interfaces/interfaces";
+import { IListProducts } from "Model/interface";
+import { HeaderView } from "./View/HeaderView/HeaderView";
+import { HeaderViewModel } from "./ViewModel/HeaderViewModel/HeaderViewModel";
 
 export const App = () => {
   const [list, setList] = useState<IListProducts[]>([]);
-  const [modal, setModal] = useState<boolean>(false);
-  const [cart, setCart] = useState<IListProducts[]>([]);
   const [search, setSearch] = useState<string>("");
+  const { onAddToCart } = HeaderViewModel();
   // --------------- GET LIST OF PRODUCTS ------------------- //
   useEffect(() => {
     axios
@@ -19,15 +18,6 @@ export const App = () => {
   }, []);
 
   // --------------- HIDE SCROLL ON MODAL ------------------ //
-  useEffect(() => {
-    modal
-      ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow = "auto");
-  }, [modal]);
-
-  const onAddToCart = (item: IListProducts) => {
-    setCart((prevState) => [...prevState, item]);
-  };
 
   const onSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -37,8 +27,7 @@ export const App = () => {
 
   return (
     <div className="wrapper clear">
-      {modal && <Drawer list={cart} onCloseModal={() => setModal(false)} />}
-      <Header onOpenModal={() => setModal(true)} />
+      <HeaderView />
       <div className="content p-40">
         <div className="d-flex align-center justify-between mb-40">
           <h1 className="cut-text" style={{ maxWidth: "70%" }}>

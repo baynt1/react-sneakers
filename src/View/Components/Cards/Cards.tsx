@@ -1,6 +1,8 @@
-import styles from "./Card.module.scss";
+import "./Cards.scss";
 import { FC, useState } from "react";
-import { ICard } from "../../interfaces/interfaces";
+import { ICard } from "../../../Model/interface";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export const Card: FC<ICard> = ({ imageUrl, title, price, onPlus }) => {
   const [isAdded, setAdd] = useState(false);
@@ -8,10 +10,20 @@ export const Card: FC<ICard> = ({ imageUrl, title, price, onPlus }) => {
     setAdd(!isAdded);
     onPlus({ imageUrl, title, price });
   };
-
-  return (
-    <div className={styles.card}>
-      <div className={styles.favorite}>
+  const [loading, setLoading] = useState(true);
+  return loading ? (
+    <div className="card">
+      <Skeleton width={"100%"} height={112} />
+      <Skeleton width={"100%"} height={20} className={"mt-20"} />
+      <Skeleton width={"80%"} height={20} />
+      <div className="d-flex justify-between align-center mt-15">
+        <Skeleton width={72} height={36} />
+        <Skeleton width={32} height={32} />
+      </div>
+    </div>
+  ) : (
+    <div className="card">
+      <div className="favorite">
         <img src="/heart-unliked.svg" alt="Unliked" />
       </div>
       <img width={133} height={112} src={imageUrl} alt="Sneakers" />
@@ -23,7 +35,7 @@ export const Card: FC<ICard> = ({ imageUrl, title, price, onPlus }) => {
         </div>
         <img
           onClick={handleAdd}
-          className={styles.plus}
+          className="plus"
           src={isAdded ? "/btn-checked.svg" : "/btn-plus.svg"}
           alt="Plus"
         />

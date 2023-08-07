@@ -18,12 +18,13 @@ The React - Sneakers is a web application built with React.js. The app provides 
 - TypeScript
 - Axios
 - SCSS
+- Swiper
 - MVVM
   
 # Installation
 
 ```bash
-git clone https://github.com/your-username/react-sneakers.git
+git clone https://github.com/baynt1/react-sneakers.git
 
 cd react-sneakers
 
