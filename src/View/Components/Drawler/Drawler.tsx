@@ -1,5 +1,5 @@
 import { FC, useEffect } from "react";
-import { IDrawer } from "../interfaces/interfaces";
+import { IDrawer } from "../../../Model/interface";
 
 export const Drawer: FC<IDrawer> = ({ onCloseModal, list }) => {
   const letMeOut = (event) => {

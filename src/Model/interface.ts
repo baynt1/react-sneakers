@@ -17,5 +17,5 @@ export interface ICard {
   imageUrl: string;
   title: string;
   price: number;
-  onPlus: () => void;
+  onPlus: (p: { price: number; imageUrl: string; title: string }) => void;
 }
