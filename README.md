@@ -17,6 +17,7 @@ The React - Sneakers is a web application built with React.js. The app provides 
 - TypeScript
 - Axios
 - SCSS
+- Swiper
   
 # Installation
 
