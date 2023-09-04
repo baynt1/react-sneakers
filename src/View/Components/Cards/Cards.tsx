@@ -1,16 +1,19 @@
 import "./Cards.scss";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { ICard } from "../../../Model/interface";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { CardsViewModel } from "../../../ViewModel/Components/CardsViewModel";
 
-export const Card: FC<ICard> = ({ imageUrl, title, price, onPlus }) => {
-  const [isAdded, setAdd] = useState(false);
-  const handleAdd = () => {
-    setAdd(!isAdded);
-    onPlus({ imageUrl, title, price });
-  };
-  const [loading, setLoading] = useState(true);
+export const Card: FC<ICard> = ({
+  imageUrl,
+  title,
+  price,
+  onPlus,
+  loading,
+}) => {
+  const { setAdd, handleAdd, isAdded } = CardsViewModel();
+
   return loading ? (
     <div className="card">
       <Skeleton width={"100%"} height={112} />

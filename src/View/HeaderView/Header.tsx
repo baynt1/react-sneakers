@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { IHeader } from "../../../Model/interface";
+import { IHeader } from "../../Model/interface";
 
 export const Header: FC<IHeader> = ({ onOpenModal }) => {
   return (
     <header className="d-flex justify-between align-center p-40">
       <div className="d-flex align-center">
-        <img width={40} height={40} src="/logo.png" alt={"logo"} />
+        <img width={40} height={40} src="/public/logo.png" alt={"logo"} />
         <div>
           <h3 className="text-uppercase">React Sneakers</h3>
           <p className="opacity-5">Магазин лучших кроссовок</p>
@@ -13,7 +13,7 @@ export const Header: FC<IHeader> = ({ onOpenModal }) => {
       </div>
       <ul className="d-flex align-center">
         <li className="mr-30 cu-p d-flex align-center" onClick={onOpenModal}>
-          <img width={18} height={18} src="/cart.svg" alt={"cart"} />
+          <img width={18} height={18} src="/public/cart.svg" alt={"cart"} />
           <span style={{ fontWeight: 500, color: "#808080" }}>1205 руб.</span>
         </li>
         <li className={"d-flex align-center"} style={{ gap: 10 }}>
