@@ -1,6 +1,7 @@
 import { HeaderView } from "./View/HeaderView/HeaderView";
 import { MainViewModel } from "./ViewModel/MainViewModel/MainViewModel";
 import { MainView } from "./View/MainView/MainView";
+import { SliderView } from "./View/SliderView/SliderView";
 
 export const App = () => {
   const { search, onSearch, onClearSearch, onAddToCart, list, loading } =
@@ -8,6 +9,7 @@ export const App = () => {
   return (
     <div className="wrapper clear">
       <HeaderView />
+      <SliderView />
       <MainView
         list={list}
         search={search}

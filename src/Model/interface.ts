@@ -31,3 +31,7 @@ export interface IMainView {
   list: IListProducts[];
   loading: boolean;
 }
+
+export interface IButton {
+  text: string;
+}

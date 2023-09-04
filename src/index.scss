@@ -191,3 +191,11 @@ header {
     }
   }
 }
+
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+  color: #9dd558;
+}
+
+.swiper-button-prev:after, .swiper-rtl .swiper-button-prev:after {
+  color: #9dd558;
+}

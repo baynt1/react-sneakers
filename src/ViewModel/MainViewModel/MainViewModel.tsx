@@ -13,7 +13,7 @@ export const MainViewModel = () => {
   // --------------- GET LIST OF PRODUCTS ------------------- //
   useEffect(() => {
     axios
-      .get<IListProducts>("https://64beb4b35ee688b6250cd3b1.mockapi.io/product")
+      .get<IListProducts>("https://baynt1.github.io/fakeData/sneakers.json")
       .then((res) => {
         setList(res.data || []);
         setLoading(false);
