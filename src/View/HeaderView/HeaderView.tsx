@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Drawer } from "../Components/Drawler/Drawler";
-import { Header } from "../Components/Header/Header";
+import { Header } from "./Header";
 import { HeaderViewModel } from "../../ViewModel/HeaderViewModel/HeaderViewModel";
 
 export const HeaderView: FC = () => {
